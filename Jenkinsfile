@@ -5,7 +5,7 @@ pipeline {
         RELEASE="1.00"
         DOCKER_USER="tejasirigireddy"
         DOCKER_PASS="dockerhubcred"
-        IMAGE_NAME="${DOCKER_USER}+"/"+"${APP_NAME}"
+        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG="${RELEASE}-${BUILD_NUMBER}"
     }
         
