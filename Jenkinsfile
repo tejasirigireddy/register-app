@@ -32,10 +32,12 @@ pipeline {
         }
         stage("Build image and Push to DockerHub"){
             steps{
-		docker.withRegistry(' ',DOCKER_PASS){
-	        def docker_image=docker.build("${IMAGE_NAME}")
-		docker_image.push("${IMAGE_TAG}")
-		docker_image.push('latest')
+	        script{
+		    docker.withRegistry('',DOCKER_PASS){
+	            def docker_image=docker.build("${IMAGE_NAME}")
+		    docker_image.push("${IMAGE_TAG}")
+		    docker_image.push('latest')
+		    }		    
 		}
 	    }
 	}    		
