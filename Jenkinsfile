@@ -1,5 +1,14 @@
 pipeline {
     agent any
+    environment{
+        APP_NAME="register-app-pipeline"
+        RELEASE="1.00"
+        DOCKER_USER="tejasirigireddy"
+        DOCKER_PASS="dockerhubcred"
+        IMAGE_NAME="${DOCKER_USER}+"/"+"${APP_NAME}"
+        IMAGE_TAG="${RELEASE}-${BUILD_NUMBER}"
+    }
+        
     stages {
         stage("cleanup workspace") {
             steps {
@@ -19,6 +28,17 @@ pipeline {
         stage("Test"){
             steps{
                 sh 'mvn test'
+            }
+        }
+        stage("build and push docker image"){
+            steps{
+                script{
+                    docker.withRegistry('DOCKER_PASS'){
+                        def dockerImage=docker.build("${IMAGE_MAME}/${IMAGE_TAG}")
+                        dockerImage.push("${IMAGE_TAG}")
+                        dockerImage.push('latest')
+                    }
+                }
             }
         }
         
