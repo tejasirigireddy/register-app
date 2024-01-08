@@ -4,7 +4,7 @@ pipeline {
         APP_NAME="register-app-pipeline"
         RELEASE="1.00"
         DOCKER_USER="dockerhubcred"
-        DOCKER_PASS="dockerhubcred"
+        DOCKER_PASS="dckr_pat_tU8SKx4shqBSDobniHc0VjyzUAU"
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG="${RELEASE}-${BUILD_NUMBER}"
     }
