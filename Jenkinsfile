@@ -34,7 +34,7 @@ pipeline {
             steps{
                 script{
                     docker.withRegistry('',DOCKER_PASS){
-                        def dockerImage=docker.build "${IMAGE_MAME}"
+                        def dockerImage=docker.build "${IMAGE_NAME}"
                         dockerImage.push("${IMAGE_TAG}")
                         dockerImage.push('latest')
                     }
