@@ -3,8 +3,8 @@ pipeline {
     environment{
         APP_NAME="register-app-pipeline"
         RELEASE="1.00"
-        DOCKER_USER="dockerhubcred"
-        DOCKER_PASS="dckr_pat_tU8SKx4shqBSDobniHc0VjyzUAU"
+        DOCKER_USER="teja7781"
+        DOCKER_PASS="dockerhubcred"
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG="${RELEASE}-${BUILD_NUMBER}"
     }
