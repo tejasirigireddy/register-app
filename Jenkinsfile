@@ -33,7 +33,7 @@ pipeline {
         stage("quality check"){
             steps{
                 script{
-                    waitForQualityGate abortpipeline: false, credentialsId: 'jenkins-sonarqube-token'
+                    waitForQualityGate abortpipeline: true, credentialsId: 'jenkins-sonarqube-token'
                 }
             }
         }
