@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
         APP_NAME="register-app-pipeline"
-        RELEASE="1.00"
+        RELEASE="2.0.0"
         DOCKER_USER="teja7781"
         DOCKER_PASS="dockerhubcred"
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
@@ -40,6 +40,13 @@ pipeline {
                     }
                 }
             }
+        }
+        stage("Trivy Scan") {
+           steps {
+               script {
+	            sh ('docker run -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image teja7781/register-app-pipeline:latest --no-progress --scanners vuln  --exit-code 0 --severity HIGH,CRITICAL --format table')
+               }
+           }
         }
         
                     
