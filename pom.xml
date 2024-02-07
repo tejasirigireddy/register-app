@@ -46,8 +46,6 @@
                        <failOnMissingWebXml>false</failOnMissingWebXml>
                    </configuration>
               </plugin>
-
-     //eer
       <plugin>
         <artifactId>maven-release-plugin</artifactId>
         <configuration>
