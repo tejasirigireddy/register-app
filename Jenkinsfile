@@ -34,7 +34,7 @@ pipeline{
 					def dockerImageName='my_image'
 					def dockerHubCredentials='teja7781'
 					docker.withRegistry('https://index.docker.io/v1/', "${dockerHubCredentials}"){
-						docker.image("${dockerImageName}").push("repo-1")
+						docker.image("${dockerImageName}").push("teja7781/repo-1")
 					}
 				}
 			}
