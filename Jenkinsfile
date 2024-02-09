@@ -25,7 +25,18 @@ pipeline{
 			steps{
 				script{
 					sh "docker build -t my_image:${BUILD_NUMBER} ." 
-					echo 'image name is${my_image}'
+				}
+			}
+		}
+		stage("push image to hub"){
+			steps{
+				script{
+					def dockerImageName='my_image'
+					def dockerImageTag='latest'
+					def dockerHubCredentials='teja7781'
+					docker.withRegistry('https://index.docker.io/v1/', "${dockerHubCredentials}"){
+						docker.image("${dockerImageName}:${dockerImageTag}").push()
+					}
 				}
 			}
 		}
