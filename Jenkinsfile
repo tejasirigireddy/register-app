@@ -21,29 +21,19 @@ pipeline{
 				sh 'mvn test'
 			}
 		}
-		stage("build docker image"){
-			steps{
-				script{
-					sh "docker build -t my_image:${BUILD_NUMBER} ." 
-					echo 'image name is${my_image}'
-				}
-			}
-		}
-		stage("push to dockerhub"){
-			steps{
-				script{
-					def dockerImage="my_image:${BUILD_NUMBER}"
-					def dockerHub='teja7781'
-					def dockerRepo='totalproject'
-					
-					docker.withRegistry("https://index.docker.io/v1/", 'teja7781'){
-						docker.image(dockerImage).push("${dockerRepo}:${BUILD_NUMBER}")
-						docker.image(dockerImage).push("${dockerRepo}:latest")
+		
+		stage("Build & Push Docker Image") {
+			steps {
+				script {
+					docker.withRegistry('',teja7781) {
+						docker_image = docker.build "${IMAGE_NAME}"
+					}
+					docker.withRegistry('',teja7781) {
+						docker_image.push("${IMAGE_TAG}")
+						docker_image.push('latest')
 					}
 				}
 			}
 		}
-		
-		}
-	
 	}
+}
