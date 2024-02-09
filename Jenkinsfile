@@ -24,15 +24,15 @@ pipeline{
 		stage("build docker image"){
 			steps{
 				script{
-					sh "docker build -t my_image_1:${BUILD_NUMBER} ." 
-					echo 'image name is${myimageone}'
+					sh "docker build -t my_image:${BUILD_NUMBER} ." 
+					echo 'image name is${my_image}'
 				}
 			}
 		}
 		stage("push to dockerhub"){
 			steps{
 				script{
-					def dockerImage="my_image_1:${BUILD_NUMBER}"
+					def dockerImage="my_image:${BUILD_NUMBER}"
 					def dockerHub='teja7781'
 					def dockerRepo='totalproject'
 					
