@@ -25,7 +25,7 @@ pipeline{
 			steps{
 				script{
 					sh "docker build -t myimageone:${BUILD_NUMBER} ." 
-					echo 'image name is$myimageone'
+					echo 'image name is${myimageone}'
 				}
 			}
 		}
