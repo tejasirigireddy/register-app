@@ -21,6 +21,22 @@ pipeline{
 				sh 'mvn test'
 			}
 		}
+		stage("build docker image"){
+			steps{
+				script{
+					docker.build('myimageone')
+				}
+			}
+		}
+		stage("push to dockerhub"){
+			steps{
+				script{
+					docker.withRegistry('https://hub.docker.com/repository/docker/teja7781/totalproject', 'teja7781')
+					docker.image('myimageone').push('latest')
+				}
+			}
+		}
+		
 		}
 	}
 			
