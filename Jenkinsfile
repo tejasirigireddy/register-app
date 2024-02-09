@@ -32,8 +32,13 @@ pipeline{
 		stage("push to dockerhub"){
 			steps{
 				script{
-					docker.withRegistry('https://hub.docker.com/repository/docker/teja7781/totalproject/general', 'teja7781')
-				        	docker.image('myimageone').push('teja7781/totalproject:latest')
+					def dockerImage="myimageone:${BUILD_NUMBER}"
+					def dockerHub='teja7781'
+					def dockerRepo='totalproject'
+					docker.withRegistry("https://index.docker.io/v1/", teja7781){
+						docker.image(dockerImage).push("${dockerRepo}:${BUILD_NUMBER}")
+						docker.image(dockerImage).push("${dockerRepo}:latest")
+					}
 				}
 			}
 		}
