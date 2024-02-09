@@ -32,10 +32,9 @@ pipeline{
 			steps{
 				script{
 					def dockerImageName='my_image'
-					def dockerImageTag='latest'
 					def dockerHubCredentials='teja7781'
 					docker.withRegistry('https://index.docker.io/v1/', "${dockerHubCredentials}"){
-						docker.image("${dockerImageName}:${dockerImageTag}").push()
+						docker.image("${dockerImageName}").push()
 					}
 				}
 			}
