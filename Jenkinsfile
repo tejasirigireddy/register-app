@@ -24,14 +24,14 @@ pipeline{
 		stage("build docker image"){
 			steps{
 				script{
-					sh "docker build -t my_imageg ." 
+					sh "docker build -t my_image ." 
 				}
 			}
 		}
 		stage("push image to hub"){
 			steps{
 				script{
-					def dockerImageName='my_imageg'
+					def dockerImageName='my_image'
 					def dockerHubCredentials='teja7781'
 					docker.withRegistry('https://index.docker.io/v1/', "${dockerHubCredentials}"){
 						docker.image("${dockerImageName}").push()
