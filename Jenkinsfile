@@ -21,6 +21,14 @@ pipeline{
 				sh 'mvn test'
 			}
 		}
+		stage("build docker image"){
+			steps{
+				script{
+					sh "docker build -t my_image:${BUILD_NUMBER} ." 
+					echo 'image name is${my_image}'
+				}
+			}
+		}
 		
 	}
 }
