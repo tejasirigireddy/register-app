@@ -31,8 +31,8 @@ pipeline{
 		stage("push to dockerhub"){
 			steps{
 				script{
-					docker.withRegistry('https://hub.docker.com', 'teja7781')
-					docker.image('myimageone').push('teja7781/totalproject:latest')
+					docker.withRegistry('https://registry.hub.docker.com', 'teja7781')
+				        	docker.image('myimageone').push('teja7781/totalproject:latest')
 				}
 			}
 		}
