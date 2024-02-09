@@ -24,7 +24,7 @@ pipeline{
 		stage("build docker image"){
 			steps{
 				script{
-					sh 'docker build -t ${'BUILD_NUMBER'} .' 
+					sh "docker build -t myimageone:${BUILD_NUMBER} ." 
 				}
 			}
 		}
