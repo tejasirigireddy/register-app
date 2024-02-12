@@ -5,7 +5,7 @@ pipeline{
 		AWS_DEFAULT_REGION="us-east-1"
 		IMAGE_REPO_NAME="myregistry1"
 		IMAGE_TAG="latest"
-		REPOSITORY_URL="public.ecr.aws/e1d1d8b3/myregistry1"
+		REPOSITORY_URI="public.ecr.aws/e1d1d8b3/myregistry1"
 	}
 	stages{
 		stage("clean workspace"){
