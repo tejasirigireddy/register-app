@@ -21,24 +21,11 @@ pipeline{
 				sh 'mvn test'
 			}
 		}
-		stage("build docker image"){
+		stage("build and push"){
 			steps{
 				script{
-					sh "docker build -t my_image ." 
-				}
-			}
-		}
-		stage("push image to hub"){
-			steps{
-				script{
-					def dockerImageName='my_image'
-					def dockerHubCredentials='teja7781'
-					docker.withRegistry('https://index.docker.io/v1/', "${dockerHubCredentials}"){
-						docker.image("${dockerImageName}").push("teja7781/repo-1")
-					}
-				}
-			}
-		}
-		
+					withDockerRegistry(credentialsId: 'teja7781'){
+						sh "docker build -t teja7781/totalproject:tag1"
+						sh "docker push teja7781/totalproject:tag2"
 	}
 }
