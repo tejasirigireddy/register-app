@@ -4,8 +4,8 @@ pipeline{
 		AWS_ACCOUNT_ID="916755039608"
 		AWS_DEFAULT_REGION="us-east-1"
 		IMAGE_REPO_NAME="myregistry1"
-		IMAGE_TAG="latest"
 		REPOSITORY_URL="public.ecr.aws/e1d1d8b3/myregistry1"
+	}
 	stages{
 		stage("clean workspace"){
 			steps{
@@ -40,7 +40,9 @@ pipeline{
 				script{
 					sh """docker tag ${IMAGE_REPO_NAME}:${timestamp} ${REPOSITORY_URI}:$timestamp"""
 					sh """docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${timestamp}"""
-         }
+				}
+			}
+		}
 					
 	}
 }
