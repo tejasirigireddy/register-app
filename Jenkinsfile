@@ -25,7 +25,7 @@ pipeline{
 			steps{
 				script{
 					withDockerRegistry(credentialsId: 'teja7781'){
-						sh "docker build -t teja7781/totalproject:tag1"
-						sh "docker push teja7781/totalproject:tag2"
+						sh "docker build -t teja7781/totalproject:tag2 ."
+						sh "docker push teja7781/totalproject:tag3"
 	}
 }
