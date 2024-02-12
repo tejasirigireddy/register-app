@@ -26,7 +26,7 @@ pipeline{
 				script{
 					def timestamp=new Date().format("yyyyMMddHHmmss")
 					withDockerRegistry(credentialsId: 'teja7781'){
-						sh "docker build -t yesyes:${timestamp} ."
+						sh "docker build -t teja7781/totalproject:${timestamp} ."
 						sh "docker push teja7781/totalproject:${timestamp}"
 					}
 				}
