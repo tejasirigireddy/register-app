@@ -21,13 +21,6 @@ pipeline{
 				sh 'mvn test'
 			}
 		}
-		stage('Logging into AWS ECR') {
-			steps {
-				script {
-					sh """aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/e1d1d8b3"""
-				}
-			}
-		}
 		stage("build image"){
 			steps{
 				script{
@@ -35,11 +28,15 @@ pipeline{
 				}
 			}
 		}
-		stage('Pushing to ECR') {
-			steps{ 
-				script {
-					sh "docker tag myregistry1:latest public.ecr.aws/e1d1d8b3/myregistry1:latest"
-					sh "docker push public.ecr.aws/e1d1d8b3/myregistry1:latest"
+		stage("build and push"){
+			steps{
+				script{
+					def buildnumber=env.BUILD_NUMBER
+					def repositoryName="teja7781/totalproject"
+					withDockerRegistry(credentialsId: 'teja7781'){
+						sh "docker build -t ${repositoryName}:${buildNumber} ."
+						sh "docker push ${repositoryName}:${buildNumber}"
+					}
 				}
 			}
 		}
