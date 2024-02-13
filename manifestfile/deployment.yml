@@ -1,1 +1,18 @@
+apiVersion: "V1"
+kind: Deployment
+metadata:
+-name: my-dp
 
+spec:
+replicas: 3
+match label:
+app: register-app
+template:
+selector:
+app: register-app
+
+containers:
+-name: cont1
+image: teja7781/totalproject
+ports:
+--portnumber: 8080
