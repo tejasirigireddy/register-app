@@ -1,1 +1,15 @@
+apiVersion: apps/V1
+kind: Service
+metadata:
+name: myservice1
+
+spec:
+type:Nodeport
+selector:
+app: register-app
+port: 80
+-targetport: 8080
+
+
+
 
