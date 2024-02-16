@@ -39,7 +39,7 @@ pipeline{
 			        GIT_REPO_NAME="register-app"
 			}	
 			steps{
-				withCredentials(credentialsId: 'tejasirigireddy'){
+				withCredentials([string(credentialsId: 'tejasirigireddy')]){
 					sh '''
                                             git config user.mail="tejaswinisy2000@gmail.com"
 					    git config user.name="tejasirigireddy"
@@ -48,7 +48,7 @@ pipeline{
 		                            git add manifestfile/deployment.yml
 			                    git commit -m "updating build number in deployment file"
 		                            git push ${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
-			                 '''
+			                '''
 				}
 			}
 		}
