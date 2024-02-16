@@ -21,7 +21,7 @@ pipeline{
 				sh 'mvn test'
 			}
 		}
-		stage("build and push"){
+		stage("build & push"){
 			steps{
 				script{
 					def buildNumber=env.BUILD_NUMBER
