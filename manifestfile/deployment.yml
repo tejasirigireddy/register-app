@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: cont1
-        image: teja7781/totalproject:45
+        image: teja7781/totalproject:replacetag
         ports:
           - containerPort: 8080
