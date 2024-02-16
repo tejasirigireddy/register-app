@@ -50,7 +50,10 @@ pipeline{
 					sh '''
                                             git config user.email "tejaswinisy2000@gmail.com"
                                             git config user.name "tejasirigireddy"
-					    BUILD_NUMBER=${BUILD_NUMBER}
+					    BUILD_NUMBER=${BUILD_NUMBER}'''
+				}
+			}
+		}
 	                                    
 	 
      
