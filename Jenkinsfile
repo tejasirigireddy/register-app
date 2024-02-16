@@ -39,7 +39,7 @@ pipeline{
 			        GIT_REPO_NAME="register-app"
 			}	
 			steps{
-				withCredentials([string(credentialsId: 'tejasirigireddy')]){
+				withCredentials([string(credentialsId: 'tejasirigireddy'variable: 'GITHUB_TOKEN')]){
 					sh '''
                                             git config user.mail="tejaswinisy2000@gmail.com"
 					    git config user.name="tejasirigireddy"
@@ -47,7 +47,7 @@ pipeline{
 				            sed -i "s/replacetag/${build_number}/g" manifestfile/deployment.yml
 		                            git add manifestfile/deployment.yml
 			                    git commit -m "updating build number in deployment file"
-		                            git push ${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+		                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
 			                '''
 				}
 			}
