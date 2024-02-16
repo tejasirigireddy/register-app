@@ -33,14 +33,11 @@ pipeline{
 				}
 			}
 		}
-		stage("update buildnumber in manifestfile"){	
+		stage("update in manifestfile"){	
 			steps{
 				script{
-					git  branch:'main', credentialsId:'tejasirigireddy', url:'https://github.com/tejasirigireddy/register-app.git'
-					sh "sed -i 's/replacetag/${BUILD_NUMBER}/g' manifestfile/deployment.yml"
-					git add()
-			                git commit -m "updating build number in deployment file"
-		                        git push()
+					def buildnumber=env.BUILD_NUMBER
+					sh "sed -i 's/replacetag/${buildnumber}/g' manifestfile/deployment.yml"
 				}
 			}
 		}
