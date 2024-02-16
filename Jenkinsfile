@@ -21,13 +21,6 @@ pipeline{
 				sh 'mvn test'
 			}
 		}
-		stage("build image"){
-			steps{
-				script{
-					sh "docker build -t myregistry1 ."
-				}
-			}
-		}
 		stage("build and push"){
 			steps{
 				script{
