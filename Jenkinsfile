@@ -36,7 +36,7 @@ pipeline{
 		stage("update buildnumber in manifestfile"){
 			environment{
 				GIT_USER_NAME="tejasirigireddy"
-			        GIT_REPO_NAME="register-app"
+			        GIT_REPO_NAME="register-app.git"
 			}	
 			steps{
 				withCredentials(credentialsId: 'github', variable: 'GITHUB_TOKEN'){
