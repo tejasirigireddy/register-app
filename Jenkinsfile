@@ -32,7 +32,25 @@ pipeline{
 					}
 				}
 			}
-		}			
-					
+		}
+		stage("update buildnumber in manifestfile"){
+			environment{
+				GIT_USER_NAME="tejasirigireddy"
+			        GIT_REPO_NAME="register-app"
+			}	
+			steps{
+				withCredentials(credentialsId: 'tejasirigireddy'){
+					sh '''
+                                            git config user.mail="tejaswinisy2000@gmail.com"
+					    git config user.name="tejasirigireddy"
+	                                    build_number=${BUILD_NUMBER}
+				            sed -i "s/replacetag/${build_number}/g" manifestfile/deployment.yml
+		                            git add manifestfile/deployment.yml
+			                    git commit -m "updating build number in deployment file"
+		                            git push ${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+			      '''
+				}
+			}
+		}
 	}
 }
