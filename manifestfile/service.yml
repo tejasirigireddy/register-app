@@ -4,7 +4,7 @@ metadata:
   name: myservice1
 
 spec:
-  type: Nodeport
+  type: LoadBalancer
   selector:
     app: register-app
   ports:
