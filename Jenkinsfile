@@ -33,23 +33,14 @@ pipeline{
 				}
 			}
 		}
-		stage("update buildnumber in manifestfile"){
-			environment{
-				GIT_USER_NAME="tejasirigireddy"
-			        GIT_REPO_NAME="register-app.git"
-			}	
+		stage("update buildnumber in manifestfile"){	
 			steps{
-				withCredentials([string(credentialsId: 'tejasirigireddy', variable: 'GITHUB_TOKEN')]){
-					sh '''
-                                            git config user.mail="tejaswinisy2000@gmail.com"
-					    git config user.name="tejasirigireddy"
-	                                    build_number=${BUILD_NUMBER}
-				            sed -i "s/replacetag/${build_number}/g" manifestfile/deployment.yml
-		                            git add manifestfile/deployment.yml
-			                    git commit -m "updating build number in deployment file"
-		                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
-			                '''
-					
+				script{
+					git credentialsId:'github', url:"https://github.com/tejasirigireddy/register-app.git'
+					sh "sed -i 's/replacetag/${build_number}/g' manifestfile/deployment.yml"
+					git add()
+			                git commit -m "updating build number in deployment file"
+		                        git push()
 				}
 			}
 		}
