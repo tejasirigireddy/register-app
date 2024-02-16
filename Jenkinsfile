@@ -40,7 +40,7 @@ pipeline{
 					sh "sed -i 's/replacetag/${buildnumber}/g' manifestfile/deployment.yml"
 					sh "git add ."
 					sh "git commit -m 'updated with ${buildnumber}'"
-					sh "git push"
+					sh "git push --set-upstream origin main"
 				}
 			}
 		}
