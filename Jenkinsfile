@@ -39,7 +39,7 @@ pipeline{
 			        GIT_REPO_NAME="register-app.git"
 			}	
 			steps{
-				withCredentials(credentialsId: 'github', variable: 'GITHUB_TOKEN'){
+				withCredentials(credentialsId: 'tejasirigireddy', variable: 'GITHUB_TOKEN'){
 					sh '''
                                             git config user.mail="tejaswinisy2000@gmail.com"
 					    git config user.name="tejasirigireddy"
