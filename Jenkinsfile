@@ -24,7 +24,7 @@ pipeline{
 		stage("build and push"){
 			steps{
 				script{
-					def buildnumber=env.BUILD_NUMBER
+					def buildNumber=env.BUILD_NUMBER
 					def repositoryName="teja7781/totalproject"
 					withDockerRegistry(credentialsId: 'teja7781'){
 						sh "docker build -t ${repositoryName}:${buildNumber} ."
