@@ -39,26 +39,7 @@ pipeline{
 					}
 				}
 			}
-		}
-		stage("update deployment file"){
-			environmet{
-				GIT_REPO_NAME="register-app"
-				GIT_USER_NAME="tejasirigireddy"
-			}
-			steps{
-				withCredentials(credentialsId: 'tejasirigireddy'){
-					sh '''
-                                            git config user.email "tejaswinisy2000@gmail.com"
-                                            git config user.name "tejasirigireddy"
-					    BUILD_NUMBER=${BUILD_NUMBER}'''
-				}
-			}
-		}
-	                                    
-	 
-     
-						
-				
+		}			
 					
 	}
 }
