@@ -36,7 +36,7 @@ pipeline{
 		stage("update buildnumber in manifestfile"){	
 			steps{
 				script{
-					git credentialsId:'github', url:"https://github.com/tejasirigireddy/register-app.git'
+					git credentialsId:'github', url:'https://github.com/tejasirigireddy/register-app.git'
 					sh "sed -i 's/replacetag/${build_number}/g' manifestfile/deployment.yml"
 					git add()
 			                git commit -m "updating build number in deployment file"
