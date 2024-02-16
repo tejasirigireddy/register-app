@@ -48,7 +48,7 @@ pipeline{
 		                            git add manifestfile/deployment.yml
 			                    git commit -m "updating build number in deployment file"
 		                            git push ${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
-			      '''
+			                 '''
 				}
 			}
 		}
