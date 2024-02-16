@@ -38,6 +38,7 @@ pipeline{
 				script{
 					def buildnumber=env.BUILD_NUMBER
 					sh "sed -i 's/replacetag/${buildnumber}/g' manifestfile/deployment.yml"
+					sh "git commit -m 'updated with ${buildnumber}'"
 				}
 			}
 		}
