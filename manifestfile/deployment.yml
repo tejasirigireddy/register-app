@@ -14,7 +14,7 @@ spec:
         app: register-app
     spec:
       containers:
-      - name: cont2
+      - name: cont3
         image: teja7781/totalproject:replacetag
         ports:
           - containerPort: 8080
